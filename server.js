@@ -14,9 +14,6 @@ var my_key = 'xbnzyB/ZMmDrduNsa5BN2SPDFyvKyz9Uw5gvhfcF94M=';
 // Full Event Hub publisher URI
 var my_uri = 'https://' + namespace + '.servicebus.windows.net' + '/' + hubname + '/publishers/' + devicename + '/messages';
 
-// Create a SAS token
-// See http://msdn.microsoft.com/library/azure/dn170477.aspx
-
 function create_sas_token(uri, key_name, key)
 {
     // Token expires in 24 hours
