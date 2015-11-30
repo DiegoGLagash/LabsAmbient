@@ -28,7 +28,7 @@ function create_sas_token(uri, key_name, key)
     return token;
 }
 
-var my_sas = create_sas_token(my_uri, my_key_name, my_key)
+//var my_sas = create_sas_token(my_uri, my_key_name, my_key)
 
 function send_payload(payload)
 {
