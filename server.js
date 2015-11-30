@@ -30,10 +30,6 @@ function create_sas_token(uri, key_name, key)
 
 var my_sas = create_sas_token(my_uri, my_key_name, my_key)
 
-console.log(my_sas);
-
-// Send the request to the Event Hub
-
 function send_payload(payload)
 {
   var options = {
@@ -65,18 +61,23 @@ function send_payload(payload)
   req.end();
 }
 
-// Configure an HTTP server to proxy requests to Event Hubs
+// var server = http.createServer(function(request, response) {
+//   var body = '';
+//   request.on('data', function(data) {
+//     body += data;
+//   });
+//   request.on('end', function() {
+//     send_payload(body);
+//     response.statusCode = 200;
+//     response.end();
+//   });
+// });
 
-var server = http.createServer(function(request, response) {
-  var body = '';
-  request.on('data', function(data) {
-    body += data;
-  });
-  request.on('end', function() {
-    send_payload(body);
-    response.statusCode = 200;
-    response.end();
-  });
-});
+// server.listen(process.env.PORT);
 
-server.listen(process.env.PORT);
+
+http.createServer(function (req, res) {
+    console.log('Got request for ' + req.url);
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end('<h1>Hello Code and Azure Web Apps!</h1>');
+}).listen(process.env.PORT);
