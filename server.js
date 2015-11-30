@@ -61,23 +61,16 @@ function send_payload(payload)
   req.end();
 }
 
-// var server = http.createServer(function(request, response) {
-//   var body = '';
-//   request.on('data', function(data) {
-//     body += data;
-//   });
-//   request.on('end', function() {
-//     send_payload(body);
-//     response.statusCode = 200;
-//     response.end();
-//   });
-// });
+var server = http.createServer(function(request, response) {
+  var body = '';
+  request.on('data', function(data) {
+    body += data;
+  });
+  request.on('end', function() {
+    send_payload(body);
+    response.statusCode = 200;
+    response.end();
+  });
+});
 
-// server.listen(process.env.PORT);
-
-
-http.createServer(function (req, res) {
-    console.log('Got request for ' + req.url);
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('<h1>Hello Code and Azure Web Apps!</h1>');
-}).listen(process.env.PORT);
+server.listen(process.env.PORT);
